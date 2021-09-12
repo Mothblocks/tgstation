@@ -70,6 +70,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// A list of instantiated middleware
 	var/list/datum/preference_middleware/middleware = list()
 
+	/// The savefile relating to core preferences, PREFERENCE_PLAYER
+	var/savefile/game_savefile
+
+	/// The savefile relating to character preferences, PREFERENCE_CHARACTER
+	var/savefile/character_savefile
+
 	/// A cache of preference entries to values.
 	/// Used to avoid expensive READ_FILE every time a preference is retrieved.
 	var/value_cache = list()
@@ -124,6 +130,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		ui = new(user, src, "PreferencesMenu")
 		ui.set_autoupdate(FALSE)
 		ui.open()
+
+		// HACK: Without this the character starts out really tiny because of some BYOND bug.
+		// You can fix it by changing a preference, so let's just forcably update the body to emulate this.
+		addtimer(CALLBACK(character_preview_view, /atom/movable/screen/character_preview_view/proc/update_body), 1 SECONDS)
 
 /datum/preferences/ui_state(mob/user)
 	return GLOB.always_state
@@ -400,6 +410,11 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 
 	var/savefile/savefile = new(path)
 	for (var/index in 1 to max_save_slots)
+		// It won't be updated in the savefile yet, so just read the name directly
+		if (index == default_slot)
+			profiles += read_preference(/datum/preference/name/real_name)
+			continue
+
 		savefile.cd = "/character[index]"
 
 		var/name

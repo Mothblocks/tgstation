@@ -58,14 +58,6 @@ const Ethereal: Species = {
       description: "Ethereals have much lower tolerance for cold temperatures.",
     }],
   },
-  lore: multiline`Ethereals are a species native to the planet Sprout. When
-  they were originally discovered, they were at a medieval level of
-  technological progression, but due to their natural acclimation with
-  electricity, they felt easy among the large NanoTrasen installations.
-
-  Due to a hostile take-over by the millitary caste on their home planet,
-  most Ethereals are refugees that fled from their home, the ones that are
-  still on Sprout are working there under authoritian rule.`,
 };
 
 export default Ethereal;

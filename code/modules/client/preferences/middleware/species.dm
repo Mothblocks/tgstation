@@ -8,6 +8,7 @@
 
 /datum/asset/spritesheet/species
 	name = "species"
+	early = TRUE
 
 /datum/asset/spritesheet/species/register()
 	var/list/to_insert = list()

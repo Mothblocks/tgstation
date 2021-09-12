@@ -53,6 +53,7 @@ export type ServerSpeciesData = {
 
 export type Quirk = {
   description: string;
+  icon: string;
   name: string;
   value: number;
 };
@@ -126,6 +127,10 @@ export type PreferencesMenuData = {
 
   job_bans?: string[];
   job_days_left?: Record<string, number>;
+  job_required_experience?: Record<string, {
+    experience_type: string,
+    required_playtime: number,
+  }>;
   job_preferences: Record<string, JobPriority>;
 
   keybindings: Record<string, string[]>;

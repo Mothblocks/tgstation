@@ -1,3 +1,5 @@
+import { InfernoNode } from "inferno";
+
 // MOTHBLOCKS TODO: The stupid halloween races
 export type Species = {
   description: string;
@@ -6,13 +8,9 @@ export type Species = {
     neutral: Feature[],
     bad: Feature[],
   };
-  lore: string;
+  lore?: string[];
 };
 
-// MOTHBLOCKS TODO: What if the features were config-dependent?
-// As in, you don't see humans can be command if the config says that
-// isn't true.
-// Could add a feature flag.
 export type Feature = {
   icon: string;
   name: string;
@@ -26,7 +24,6 @@ export const fallbackSpecies: Species = {
     neutral: [],
     bad: [],
   },
-  lore: "LORE MASTER, I NEED LORE, HELP",
 };
 
 export const createLanguagePerk = (language: string): Feature => {

@@ -155,18 +155,18 @@ GLOBAL_LIST_INIT(skin_tones, sortList(list(
 	)))
 
 GLOBAL_LIST_INIT(skin_tone_names, list(
-	"african1" = "African 1",
-	"african2" = "African 2",
+	"african1" = "Medium brown",
+	"african2" = "Dark brown",
 	"albino" = "Albino",
-	"arab" = "Arab",
-	"asian1" = "Asian 1",
-	"asian2" = "Asian 2",
-	"caucasian1" = "White 1",
-	"caucasian2" = "White 2",
-	"caucasian3" = "White 3",
-	"indian" = "Indian",
-	"latino" = "Latino",
-	"mediterranean" = "Mediterranean",
+	"arab" = "Light brown",
+	"asian1" = "Ivory",
+	"asian2" = "Beige",
+	"caucasian1" = "Porcelain",
+	"caucasian2" = "Light peach",
+	"caucasian3" = "Peach",
+	"indian" = "Brown",
+	"latino" = "Light beige",
+	"mediterranean" = "Olive",
 ))
 
 /// An assoc list of species IDs to type paths
