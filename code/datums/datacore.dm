@@ -208,7 +208,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 				"rank" = rank,
 				)
 			continue
-		for(var/department_type as anything in job.departments_list)
+		for(var/department_type in job.departments_list)
 			var/datum/job_department/department = departments_by_type[department_type]
 			if(!department)
 				stack_trace("get_manifest() failed to get job department for [department_type] of [job.type]")

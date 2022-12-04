@@ -1296,7 +1296,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/airalarm, 24)
 	. = ..()
 	var/static/list/meta_data = list()
 	if(length(meta_data) == 0)
-		for(var/typepath as anything in GLOB.meta_gas_info)
+		for(var/typepath in GLOB.meta_gas_info)
 			meta_data += GLOB.meta_gas_info[typepath][META_GAS_ID]
 	. += create_table_notices(meta_data, column_name = "Gas", column_name_plural = "Gases")
 

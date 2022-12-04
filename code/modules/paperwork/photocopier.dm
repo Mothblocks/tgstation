@@ -224,7 +224,7 @@
 			var/obj/item/paper/printblank = new /obj/item/paper (loc)
 			var/printname = sanitize(params["name"])
 			var/list/printinfo
-			for(var/infoline as anything in params["info"])
+			for(var/infoline in params["info"])
 				printinfo += infoline
 			printblank.name = printname
 			printblank.add_raw_text(printinfo)

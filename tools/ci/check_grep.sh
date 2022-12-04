@@ -260,41 +260,55 @@ if $grep '^/*var/' $code_files; then
     echo -e "${RED}ERROR: Unmanaged global var use detected in code, please use the helpers.${NC}"
     st=1
 fi;
+
 part "proc args with var/"
 if $grep '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' $code_files; then
 	echo
     echo -e "${RED}ERROR: Changed files contains a proc argument starting with 'var'.${NC}"
     st=1
 fi;
+
+part "for (var/x as anything)"
+if $grep 'var/\w+ as anything' $code_files; then
+	echo
+	echo -e "${RED}ERROR: `as anything` does nothing if you're not casting to a type.${NC}"
+	st=1
+fi;
+
 part "balloon_alert sanity"
 if $grep 'balloon_alert\(".+"\)' $code_files; then
 	echo
 	echo -e "${RED}ERROR: Found a balloon alert with improper arguments.${NC}"
 	st=1
 fi;
+
 part "common spelling mistakes"
 if $grep -i 'centcomm' $code_files; then
 	echo
     echo -e "${RED}ERROR: Misspelling(s) of CentCom detected in code, please remove the extra M(s).${NC}"
     st=1
 fi;
+
 if $grep -ni 'nanotransen' $code_files; then
 	echo
     echo -e "${RED}ERROR: Misspelling(s) of Nanotrasen detected in code, please remove the extra N(s).${NC}"
     st=1
 fi;
+
 part "map json naming"
 if ls _maps/*.json | $grep "[A-Z]"; then
 	echo
     echo -e "${RED}ERROR: Uppercase in a map .JSON file detected, these must be all lowercase.${NC}"
     st=1
 fi;
+
 part "custom icon helpers"
 if $grep -i '/obj/effect/mapping_helpers/custom_icon' $map_files; then
 	echo
     echo -e "${RED}ERROR: Custom icon helper found. Please include DMI files as standard assets instead for repository maps.${NC}"
     st=1
 fi;
+
 part "map json sanity"
 for json in _maps/*.json
 do

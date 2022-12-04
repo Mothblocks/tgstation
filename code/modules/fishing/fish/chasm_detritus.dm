@@ -64,7 +64,7 @@
 
 	var/list/chasm_storage_resolved = recursive_list_resolve(GLOB.chasm_storage)
 	for (var/obj/storage as anything in chasm_storage_resolved)
-		for (var/thing as anything in storage.contents)
+		for (var/thing in storage.contents)
 			chasm_contents += thing
 
 	return chasm_contents
@@ -85,7 +85,7 @@
 
 	var/list/chasm_storage_resolved = recursive_list_resolve(GLOB.chasm_storage)
 	for (var/obj/storage as anything in chasm_storage_resolved)
-		for (var/thing as anything in storage.contents)
+		for (var/thing in storage.contents)
 			if(!istype(thing, chasm_storage_restricted_type))
 				continue
 

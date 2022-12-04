@@ -458,7 +458,7 @@
 	//Check for centcom shuttles
 	for(var/obj/docking_port/mobile/mobile_docking_port as anything in SSshuttle.mobile_docking_ports)
 		if(mobile_docking_port.launch_status == ENDGAME_LAUNCHED)
-			for(var/place as anything in mobile_docking_port.shuttle_areas)
+			for(var/place in mobile_docking_port.shuttle_areas)
 				var/area/shuttle/shuttle_area = place
 				if(current_turf in shuttle_area)
 					return TRUE
